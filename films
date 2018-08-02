@@ -1,0 +1,45 @@
+
+
+postgres=# create table person2content (person_id int, film_id int, person_type text, constraint pk_person2content primary key (person_id, film_id));
+CREATE TABLE
+postgres=# insert into person2content (person_id, film_id, person_type) values (450254, 644182, 'actor'), (586450, 451093, 'director'), (459863, 911886, 'actor'), (454602, 632307, 'actor'), (449147, 625812, 'director');
+INSERT 0 5
+postgres=# create table films (title text, id serial primary key, country text, box_office int, release_year date);
+CREATE TABLE
+postgres=# insert into films (title, id, country, box_office, release_year)
+values ('Twelve Monkeys', 644182, 'USA', 57141459, '1995-12-27'), ('Inception', 451093, 'USA', 292578195, '2010-06-22'),
+('Arrival', 911886, 'USA', 100546139, '2016-11-11'),
+('Starship Troopers', 632307, 'USA', 54814377, '1997-12-01'), ('Blade Runner', 459863, 'USA', 32868943, '1982-06-25');
+INSERT 0 5
+postgres=# create table persons (id serial primary key, fio text);
+CREATE TABLE
+postgres=# insert into persons (id, fio) values (450254,'Bruce Willis'), (586450, 'Christopher Nolan'), (459863, 'Amy Adams'), (454602, 'Denise Richards'), (449147, 'Ridley Scott');
+INSERT 0 5
+
+postgres=# select * from person2content; select * from films; select * from persons;
+ person_id | film_id | person_type
+-----------+---------+-------------
+    450254 |  644182 | actor
+    586450 |  451093 | director
+    459863 |  911886 | actor
+    454602 |  632307 | actor
+    449147 |  625812 | director
+(5 rows)
+
+       title       |   id   | country | box_office | release_year
+-------------------+--------+---------+------------+--------------
+ Twelve Monkeys    | 644182 | USA     |   57141459 | 1995-12-27
+ Inception         | 451093 | USA     |  292578195 | 2010-06-22
+ Arrival           | 911886 | USA     |  100546139 | 2016-11-11
+ Starship Troopers | 632307 | USA     |   54814377 | 1997-12-01
+ Blade Runner      | 459863 | USA     |   32868943 | 1982-06-25
+(5 rows)
+
+   id   |        fio
+--------+-------------------
+ 450254 | Bruce Willis
+ 586450 | Christopher Nolan
+ 459863 | Amy Adams
+ 454602 | Denise Richards
+ 449147 | Ridley Scott
+(5 rows)
