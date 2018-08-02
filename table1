@@ -1,0 +1,27 @@
+Табличка с режиссером-фильмом и оскаром
+postgres=# create table table1 (film text, director text, oscar text, constraint pk_table1 primary key (film, director));
+CREATE TABLE
+postgres=# insert into table1 (film, director, oscar) values ('Энни Холл', 'Вуди Аллен', '+'), ('Быть Джоном Малковичем', 'Спайк Джонс', '+'), ('Любовь и смерть', 'Вуди Аллен', '-');
+INSERT 0 3
+postgres=# select * from table1;
+          film          |  director   | oscar
+------------------------+-------------+-------
+ Энни Холл              | Вуди Аллен  | +
+ Быть Джоном Малковичем | Спайк Джонс | +
+ Любовь и смерть        | Вуди Аллен  | -
+(3 rows)
+
+Табличка с режиссером и оценкой
+postgres=# create table table2 (director text primary key, points int);
+CREATE TABLE
+postgres=# select * from table2;
+ director | points
+----------+--------
+postgres=# insert into table2 (director, points) values ('Вуди Аллен', 8), ('Спайк Джонс', 7);
+INSERT 0 2
+postgres=# select * from table2;
+  director   | points
+-------------+--------
+ Вуди Аллен  |      8
+ Спайк Джонс |      7
+(2 rows)
